@@ -18,6 +18,7 @@ x[:, 1:3] = imputer.transform(x[:, 1:3])
 #encode categorical data
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 labelencoder_x = LabelEncoder()
+
 #return enconded column (each name are replaced by a number)
 x[:, 0] = labelencoder_x.fit_transform(x[:, 0])
 
@@ -28,3 +29,7 @@ x = onehotenconder.fit_transform(x).toarray()
 
 labelencoder_y = LabelEncoder()
 y = labelencoder_y.fit_transform(y)
+
+#split train and test sets
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.2, random_state=0)
